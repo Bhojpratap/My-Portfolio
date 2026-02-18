@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #121212;
+  --foreground: #ededed;
+  --font-dancing: 'Dancing Script', cursive;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility class to use the Dancing Script font */
+.font-dancing {
+  font-family: var(--font-dancing);
+}
+
+/* Gradient scrollbar (Chrome, Edge, Safari) and thin fallback for Firefox */
+:root {
+  --gradient-start: #7c3aed;
+  --gradient-end: #06b6d4;
+  --scroll-thumb-gradient: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+}
+
+/* WebKit browsers */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb-gradient);
+  border-radius: 9999px;
+  border: none;
+  box-shadow: none;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.05);
+}
+
+/* Firefox fallback (no gradients) */
+html {
+  scrollbar-width: none;
+  scrollbar-color: var(--gradient-start) transparent;
+}
+
+
+
