@@ -5,7 +5,9 @@ import styles from "./cursor.module.css";
 
 export default function CustomCursor() {
   useEffect(() => {
-    const cursor = document.querySelector(`.${styles.cursor}`) as HTMLElement | null;
+    const cursor = document.querySelector(
+      `.${styles.cursor}`
+    ) as HTMLElement | null;
 
     const moveCursor = (e: MouseEvent) => {
       if (cursor) {
@@ -23,12 +25,28 @@ export default function CustomCursor() {
       }
     };
 
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      if (
+        target.closest(
+          "a, button, input, textarea, select, [role='button'], .pointer"
+        )
+      ) {
+        cursor?.classList.add(styles.hovered);
+      } else {
+        cursor?.classList.remove(styles.hovered);
+      }
+    };
+
     document.addEventListener("mousemove", moveCursor);
     document.addEventListener("click", clickCursor);
+    document.addEventListener("mouseover", handleMouseOver);
 
     return () => {
       document.removeEventListener("mousemove", moveCursor);
       document.removeEventListener("click", clickCursor);
+      document.removeEventListener("mouseover", handleMouseOver);
     };
   }, []);
 
